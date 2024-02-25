@@ -1,4 +1,14 @@
 #include <iostream>
+#define assertdomjudge(x) if(!(x)){std::cout<<"ERROR"<<std::endl;exit(0);}
+
+/*
+    Funcion que calcula la longitud de una cadena; es decir, el numero de caracteres que tiene
+    Parámetro: La cadena
+    Retorno: Un entero que te dice la longitud de la cadena
+    Precondicion: la cadena debe ser un char*, y menos de 20 caracteres
+    Complejidad Temporal: O(n)
+    Complejidad Espacial: O(1)
+*/
 
 int ft_strlen(char *str)
 {
@@ -20,6 +30,7 @@ int main(void)
     i = 0;
     esPalindromo = 0;
     std::cin >> cadena;
+    assertdomjudge(ft_strlen(cadena) < 20);
     j = ft_strlen(cadena) - 1;
     while (cadena[i] != '\0' && i < j)
     {

@@ -1,5 +1,15 @@
 #include <iostream>
 
+/*
+    Funcion que calcula el factorial de un numero
+    Parámetro: un entero
+    Retorno: el factorial del numero
+    Precondicion: el numero debe ser mayor o igual a 0
+    Complejidad Temporal: O(n)
+    Complejidad Espacial: O(1)
+       
+*/
+
 int calcularFactorial(int number)
 {
     int valor;
