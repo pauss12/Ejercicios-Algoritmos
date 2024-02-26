@@ -10,6 +10,7 @@
     Complejidad Espacial: O(1)
 */
 
+//HAY QUE HACERLO DE FORMA RECURSIVA
 int ft_strlen(char *str)
 {
     int cont;
