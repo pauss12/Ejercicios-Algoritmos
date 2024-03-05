@@ -53,21 +53,18 @@ int main(void)
     bool continuar = true;
 
     while (continuar){
+
         std::cin >> n >> r;
+
         if (n < 0)
-        {
             continuar = false;
-        }
         else if (r>n)
-        {
             std::cout << "ERROR" << std::endl;
-        }
         else
-        {
             sol = calcularCombinatoria(r, n);
             std::cout << sol << std::endl;
-        }
 
     }; 
+    
     return 0;
 }
