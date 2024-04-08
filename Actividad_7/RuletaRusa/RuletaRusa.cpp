@@ -12,13 +12,13 @@ int main()
     
     string disparo;
     
-    cerr<<"Numero de recamaras del tambor de la pistola: ";
+    cerr << "Numero de recamaras del tambor de la pistola: ";
     
-    cin>>n_recamaras;
+    cin >> n_recamaras;
     
-    cerr<<"Donde se coloca inicialmente la bala: ";
+    cerr << "Donde se coloca inicialmente la bala: ";
     
-    cin>>pos_bala;
+    cin >> pos_bala;
 
     ListaCircular pistola;
     
