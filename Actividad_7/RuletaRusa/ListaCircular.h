@@ -8,7 +8,7 @@ class ListaCircular
 
 	int n;
 
-	Nodo * getNodo (int posicion);
+	Nodo *getNodo (int posicion);
 
 public:
 
@@ -24,10 +24,8 @@ public:
 
 	void eliminar (int posicion);
 
-
 	void girar (int p);
 
-	
 	~ListaCircular();
 };
 
