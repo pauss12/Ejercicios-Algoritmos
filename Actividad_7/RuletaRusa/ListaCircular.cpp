@@ -1,30 +1,40 @@
 
 #include "ListaCircular.h"
-
-using namespace std;
+#include <iostream>
 
 //CONSTRUCTOR ------------------------------------------------
 ListaCircular::ListaCircular()
 {
-    lista = nullptr;
+    lista = NULL;
     n = 0;
 }
 
 //DESTRUCTOR -------------------------------------------------
 ListaCircular::~ListaCircular()
 {
-    Nodo *nueva_lista = lista;
-
     while (n > 0)
     {
-        delete nueva_lista;
-        nueva_lista = nueva_lista->siguienteNodo;
-        n--;
+       eliminar(0);
     }
+}
 
-    //Apuntar la lista a NULL y el numero de elementos a "0"
-    lista = nullptr;
-    n = 0;
+/*
+    GET NODO  ---------------------------
+
+    La funcion "getNodo()" lo que hace es devolver el nodo que se encuentra en la posicion que le pases; se recorre la lista hasta llegar a la posicion que le pases.
+*/
+Nodo *ListaCircular::getNodo(int posicion)
+{
+
+    Nodo* nodoActual = lista;
+    int i = 0;
+
+    while (i < posicion)
+    {
+        nodoActual = nodoActual->siguienteNodo;
+        i++;
+    }
+    return nodoActual;
 }
 
 /*
@@ -36,17 +46,10 @@ ListaCircular::~ListaCircular()
 */
 string ListaCircular::getValor(int posicion)
 {
-    Nodo *temp = lista;
-    int  i = 0;
-
-    while (i < n)
-    {
-
-        if (i == posicion)
-            return (temp->elemento);
-        temp = temp->siguienteNodo;
-        i++;
-    }
+    Nodo *temp;
+    
+    temp = getNodo(posicion);
+    return temp->elemento;
 }
 
 /*
@@ -60,19 +63,10 @@ string ListaCircular::getValor(int posicion)
 */
 void ListaCircular::setValor(int posicion, string nuevoValor)
 {
-    Nodo *temp = lista;
-    int  i = 0;
+    Nodo *temp;
 
-    while (i < n)
-    {
-
-        if (i == posicion)
-        {
-            temp->elemento = nuevoValor;
-        }
-        temp = temp->siguienteNodo;
-        i++;
-    }
+    temp = getNodo(posicion);
+    temp->elemento = nuevoValor;
 }
 
 /*
@@ -92,27 +86,33 @@ int ListaCircular::getN()
 */
 void    ListaCircular::insertar(int posicion, string nuevoValor)
 {
-    Nodo *nueva_lista = lista;
-    Nodo *nodo = ListaCircular();
-    int  i = 0;
+    Nodo *nodo = new Nodo();
+    nodo->elemento = nuevoValor;
 
-    //Me voy recorriendo la lista circular
-    while (i < n)
-    {
-        if (i == posicion)
-        {
-            nodo.elemento = nuevoValor;
+    if (n == 0){
 
-            Nodo *siguienteNodoFinal = nueva_lista.siguienteNodo;
+        nodo->anteriorNodo = nodo;
+        nodo->siguienteNodo = nodo;
+        lista = nodo;
 
-            //cambiar los punteros para meterlo en esa posicion
-            nueva_lista.anteriorNodo = nodo;
-            nodo.siguienteNodo = siguienteNodoFinal;
+    }else if (posicion == n) {
 
-        }
-        nueva_lista = nueva_lista->siguienteNodo;
-        i++;
+        Nodo *nodoAnterior = getNodo(n - 1);
+        nodo->anteriorNodo = nodoAnterior;
+        nodo->siguienteNodo = lista;
+        nodoAnterior->siguienteNodo = nodo;
+        lista->anteriorNodo = nodo;
+
+    }else {
+
+        Nodo *nodoAnterior = getNodo(posicion - 1);
+        Nodo *nodoSiguiente = nodoAnterior->siguienteNodo;
+        nodo->anteriorNodo = nodoAnterior;
+        nodo->siguienteNodo = nodoSiguiente;
+        nodoAnterior->siguienteNodo = nodo;
+        nodoSiguiente->anteriorNodo = nodo;
     }
+    n++;
 }
 
 /*
@@ -121,3 +121,53 @@ void    ListaCircular::insertar(int posicion, string nuevoValor)
     
 
 */
+void ListaCircular::eliminar(int posicion)
+{
+
+    if (n == 1)
+    {
+        delete lista;
+        lista = NULL;
+    }
+    else
+    {
+        Nodo *nodoAhora = getNodo(posicion);
+        Nodo *nodoAnterior = nodoAhora->anteriorNodo;
+        Nodo *nodoSiguiente = nodoAhora->siguienteNodo;
+        nodoAnterior->siguienteNodo = nodoSiguiente;
+        nodoSiguiente->anteriorNodo = nodoAnterior;
+
+        if (posicion == 0)
+            lista = nodoSiguiente;
+
+        delete nodoAhora;
+    }
+    n--;
+}
+
+/*
+    //GIRAR --------------------------------------------
+
+    Gira todos los elementos de la lista hacia la izquierda o la derecha
+    como indique su valor. Si el valor es positivo todos los elementos de la lista se desplazarán tantas posiciones a la derecha como indique el valor. Si el valor es negativo el desplazamiento será hacia la izquierda
+
+*/
+void ListaCircular::girar(int p)
+{
+    if (n == 0)
+        return ;
+    if (p > 0)
+    {
+        p = p % n;
+        for(int i=0; i<p; i++){
+            lista = lista->siguienteNodo;
+        }
+    }
+    else if (p < 0)
+    {
+        p = -p % n;
+        for(int k=0; k<p; k++){
+            lista = lista->anteriorNodo;
+        }
+    }
+}
