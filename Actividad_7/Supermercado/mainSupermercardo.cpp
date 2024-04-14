@@ -6,7 +6,9 @@ int main()
 {
   Supermercado *supermercado;
   char operacion;
-  int n,id;
+  int n = 0;
+  int id = 0;
+  supermercado = NULL;
   do
     {
       cin>>operacion;
