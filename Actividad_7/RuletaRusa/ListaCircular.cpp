@@ -2,14 +2,23 @@
 #include "ListaCircular.h"
 #include <iostream>
 
-//CONSTRUCTOR ------------------------------------------------
+/*
+    CONSTRUCTOR ------------------------------------------------
+
+    El constructor de la clase, que se encarga de inicializar la lista circular a NULL y el numero de nodos a 0.
+*/
 ListaCircular::ListaCircular()
 {
     lista = NULL;
     n = 0;
 }
 
-//DESTRUCTOR -------------------------------------------------
+/*
+    DESTRUCTOR -------------------------------------------------
+
+    El destructor de la clase, que se encarga de eliminar todos los nodos de la lista circular.
+    Se encarga de eliminar todos los nodos de la lista circular, llamando a la funcion "eliminar()" que se encarga de eliminar un nodo de la lista circular; y luego restar uno a la variable "n" que es el numero de nodos que hay en la lista circular.
+*/
 ListaCircular::~ListaCircular()
 {
     while (n > 0)
@@ -56,9 +65,7 @@ string ListaCircular::getValor(int posicion)
     SET VALOR ----------------------------------------------------
 
     Me dan una posicion y una cadena.
-
     Me recorro la lista circular con la ayuda de un contador y de la "n", que es el numero total de nodos que hay dentro de la lista. 
-
     Una vez el "i" coincida con la "posicion", es que ese es el nodo al que quieres cambiarle la cadena de texto.
 */
 void ListaCircular::setValor(int posicion, string nuevoValor)
@@ -71,6 +78,8 @@ void ListaCircular::setValor(int posicion, string nuevoValor)
 
 /*
     GET N ------------------------------------------  
+
+    Devuelve el numero de nodos que hay en la lista circular; se coge el valor de n, ya que es una variable privada de la clase.
 
 */
 int ListaCircular::getN()
@@ -118,7 +127,13 @@ void    ListaCircular::insertar(int posicion, string nuevoValor)
 /*
     ELIMINAR --------------------------------------
 
-    
+    Me dan una posicion, tengo que ir a esa posicion, eliminar el nodo, mover el resto de nodos y asignarle la cadena que me pasan.
+
+    Si queda solamente un nodo en la lista; se elimina el nodo y se pone la lista a NULL.
+
+    En cualquier otro caso, se guarda la posicion del nodo en el que estas, se guarda el nodo anterior y el nodo siguiente. Se enlazan el nodo anterior y el nodo siguiente y se elimina el nodo en el que estas.
+
+    Si la posicion es 0, se actualiza la lista a la siguiente posicion.
 
 */
 void ListaCircular::eliminar(int posicion)
