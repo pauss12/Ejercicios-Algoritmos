@@ -5,15 +5,20 @@ using namespace std;
 
 class Pila
 {
- private:
-  Nodo *cima;
-  string name;
- public:
-  Pila(string name);
-  string nombrePila();
-  void apilar(int num); 
-  int desapilar();
-  bool estaVacia();
+  private:
+    Nodo *cima;
+    string name;
+
+  public:
+    Pila(string name);
+
+    string nombrePila();
+
+    void apilar(int num); 
+
+    int desapilar();
+    
+    bool estaVacia();
 };
 
-  
+

@@ -5,10 +5,10 @@ class Nodo
   int valor;
   Nodo *siguiente;
   
-  Nodo(int v,Nodo *sig=NULL)
-    {
-      valor=v;
-      siguiente=sig;
-    }
+  Nodo(int v, Nodo *sig = NULL)
+  {
+    valor = v;
+    siguiente = sig;
+  }
 };
 

@@ -5,7 +5,20 @@ using namespace std;
 
 void Hanoi(int n,Pila *origen,Pila *destino,Pila *temporal) 
 {
+  assertdomjudge(n>=0);
 
+  if (n==1)
+  {
+    int disco=origen->desapilar();
+    destino->apilar(disco);
+  }
+  else
+  {
+    Hanoi(n-1,origen,temporal,destino);
+    int disco=origen->desapilar();
+    destino->apilar(disco);
+    Hanoi(n-1,temporal,destino,origen);
+  }
 }
 
 
