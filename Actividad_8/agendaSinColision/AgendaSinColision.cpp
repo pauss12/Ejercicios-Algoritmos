@@ -5,7 +5,9 @@
 using namespace std;
 
 void Agenda::imprimir() {
-	for (int i=0; i<capacidad; i++) cout << "Posicion " << i << " | Ocupada: " << ocupada[i] << " | Telefono: " << telefonos[i] << " | Nombre: " << nombres[i] << endl;
+
+	for (int i = 0; i < capacidad; i++)
+		cout << "Posicion " << i << " | Ocupada: " << ocupados[i] << " | Telefono: " << telefonos[i] << " | Nombre: " << nombres[i] << endl;
 }
 
 /*
@@ -13,7 +15,6 @@ void Agenda::imprimir() {
 
 	Recibe un entero que representa la capacidad de la agenda. Todos los arreglos se inicializan con la capacidad dada y se llena el arreglo ocupada con false para indicar que todas las posiciones están vacías.
 */
-
 Agenda::Agenda(int capacidad) {
 
 	this->capacidad = capacidad;
@@ -22,10 +23,10 @@ Agenda::Agenda(int capacidad) {
 
 	telefonos = new long[capacidad];
 
-	ocupada = new bool[capacidad];
+	ocupados = new bool[capacidad];
 
 	for (int i = 0; i < capacidad; i++)
-		ocupada[i] = false;
+		ocupados[i] = false;
 }
 
 /*
@@ -39,7 +40,7 @@ Agenda::~Agenda() {
 
 	delete[] telefonos;
 
-	delete[] ocupada;
+	delete[] ocupados;
 }
 
 /*
@@ -50,13 +51,7 @@ Agenda::~Agenda() {
 
 int Agenda::obtenerPosicion(long telefono) {
 
-	for (int i = 0; i < capacidad; i++) {
-
-		if (telefonos[i] == telefono) 
-			return i;
-	}
-
-	return -1;
+	return telefono % capacidad;
 }
 
 /*
@@ -68,7 +63,7 @@ bool Agenda::existeContacto(long telefono) {
 
 	int posicion = obtenerPosicion(telefono);
 
-	if (ocupada[posicion] && telefonos[posicion] == telefono) 
+	if (ocupados[posicion] && telefonos[posicion] == telefono) 
 		return true;
 	else 
 		return false;
@@ -83,7 +78,7 @@ string Agenda::getContacto(long telefono) {
 
 	int posicion = obtenerPosicion(telefono);
 
-	assertdomjudge(ocupada[posicion] == true && telefonos[posicion] == telefono)
+	assertdomjudge(ocupados[posicion] == true && telefonos[posicion] == telefono)
 
 	return nombres[posicion];
 }
@@ -94,17 +89,17 @@ string Agenda::getContacto(long telefono) {
 	Recibe un entero que representa un número de teléfono y un string que representa un nombre. Si el número de teléfono no se encuentra en el arreglo telefonos, se agrega el número de teléfono y el nombre en la primera posición vacía de los arreglos telefonos y nombres, respectivamente. Si el número de teléfono ya se encuentra en el arreglo telefonos, se actualiza el nombre asociado a ese número de teléfono.
 */
 
-void Agenda::introducirContacto(long telefono, string nombre) {
+void Agenda::introducirContacto(long telefono, string contacto) {
 
 	int posicion = obtenerPosicion(telefono);
 
-	assertdomjudge(ocupada[posicion] == false)
+	assertdomjudge(ocupados[posicion] == false)
 
-	ocupada[posicion] = true;
+	ocupados[posicion] = true;
 
     telefonos[posicion] = telefono;
 
-    nombres[posicion] = nombre;
+    nombres[posicion] = contacto;
 }
 
 /*
@@ -117,7 +112,7 @@ void Agenda::eliminarContacto(long telefono) {
 
 	int posicion = obtenerPosicion(telefono);
 
-	assertdomjudge(ocupada[posicion] == true && telefonos[posicion] == telefono)
+	assertdomjudge(ocupados[posicion] == true && telefonos[posicion] == telefono)
 
-	ocupada[posicion] = false;
+	ocupados[posicion] = false;
 }

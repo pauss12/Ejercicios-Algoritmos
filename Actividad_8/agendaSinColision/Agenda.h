@@ -1,5 +1,4 @@
-
-#include <iostream>
+#include <string>
 using namespace std;
 
 class Agenda {
@@ -8,7 +7,7 @@ class Agenda {
     int capacidad;
     string *nombres;
     long *telefonos;
-    bool *ocupada;
+    bool *ocupados;
 
     public:
     Agenda(int capacidad);
