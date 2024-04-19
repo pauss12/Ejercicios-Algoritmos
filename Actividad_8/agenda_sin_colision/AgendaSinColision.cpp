@@ -83,10 +83,41 @@ string Agenda::getContacto(long telefono) {
 
 	int posicion = obtenerPosicion(telefono);
 
-	assertdomjudge(ocupadps[posicion] == false)
+	assertdomjudge(ocupada[posicion] == true && telefonos[posicion] == telefono)
 
-	if (ocupada[posicion] && telefonos[posicion] == telefono) 
-		return nombres[posicion];
-	else 
-		return "";
+	return nombres[posicion];
+}
+
+/*
+	Función agregarContacto -------------
+
+	Recibe un entero que representa un número de teléfono y un string que representa un nombre. Si el número de teléfono no se encuentra en el arreglo telefonos, se agrega el número de teléfono y el nombre en la primera posición vacía de los arreglos telefonos y nombres, respectivamente. Si el número de teléfono ya se encuentra en el arreglo telefonos, se actualiza el nombre asociado a ese número de teléfono.
+*/
+
+void Agenda::introducirContacto(long telefono, string nombre) {
+
+	int posicion = obtenerPosicion(telefono);
+
+	assertdomjudge(ocupada[posicion] == false)
+
+	ocupada[posicion] = true;
+
+    telefonos[posicion] = telefono;
+
+    nombres[posicion] = nombre;
+}
+
+/*
+	Función eliminarContacto -------------
+
+	Recibe un entero que representa un número de teléfono. Si el número de teléfono se encuentra en el arreglo telefonos, se elimina el número de teléfono y el nombre asociado a ese número de teléfono.
+*/
+
+void Agenda::eliminarContacto(long telefono) {
+
+	int posicion = obtenerPosicion(telefono);
+
+	assertdomjudge(ocupada[posicion] == true && telefonos[posicion] == telefono)
+
+	ocupada[posicion] = false;
 }

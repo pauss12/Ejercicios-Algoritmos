@@ -13,6 +13,9 @@ int main() {
 	long telefono; // Clave para algunas opciones
 	string nombre; // Nombre del contacto para la opcion de meter
 
+	capacidad = 0;
+	telefono = 0;
+
 
 	cout << "Introduce la capacidad de la tabla: ";
 	cin >> capacidad;
@@ -28,7 +31,7 @@ int main() {
 			agenda.imprimir();
 			break;
 		case 'C':
-			// Comprobar si está un contacto
+			// Comprobar si estï¿½ un contacto
 			cout << "Numero de telefono del contacto ";
 			cin >> telefono;
 			if (agenda.existeContacto(telefono)) 
@@ -43,7 +46,7 @@ int main() {
 			cout << "Nombre: " << agenda.getContacto(telefono) << endl;
 			break;
 		case 'A':
-			// Añadir un contacto
+			// Aï¿½adir un contacto
 			cout << "Numero de telefono del contacto: ";
 			cin >> telefono;
 			cout << "Nombre del contacto: ";

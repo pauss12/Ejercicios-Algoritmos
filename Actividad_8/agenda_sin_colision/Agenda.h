@@ -8,7 +8,7 @@ class Agenda {
     int capacidad;
     string *nombres;
     long *telefonos;
-    bool *ocupados;
+    bool *ocupada;
 
     public:
     Agenda(int capacidad);
@@ -16,7 +16,7 @@ class Agenda {
     int obtenerPosicion(long telefono);
     bool existeContacto(long telefono);
     string getContacto(long telefono);
-    void introducirContacto(string contacto, long telefono);
+    void introducirContacto(long telefono, string contacto);
     void eliminarContacto(long telefono);
     void imprimir();
-}
+};
