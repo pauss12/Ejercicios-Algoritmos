@@ -1,7 +1,8 @@
 #include "ListaContigua.h"
 #include "cassert"
-#include "cstdlib" // Para realloc()
-#include "cstring" // Para memmove()
+#include "cstdlib"
+#include "cstring"
+
 using namespace std;
 
 bool ListaContigua::isLlena() {
@@ -9,8 +10,8 @@ bool ListaContigua::isLlena() {
 }
 
 ListaContigua::ListaContigua() {
-	vector = NULL; // No hay que reservar memoria ya que la ListaContigua se crea vacía en un principio
-	n=0;
+	vector = NULL; 
+	n = 0;
 	capacidad=0;
 }
 
@@ -20,7 +21,7 @@ int ListaContigua::getValor(int posicion) {
 }
 
 void ListaContigua::setValor(int posicion, int nuevoValor) {
-	assert(posicion >= 0 && posicion <= n-1);
+	assert(posicion >= 0 && posicion <= n - 1);
 	vector[posicion] = nuevoValor;
 }
 
@@ -41,9 +42,10 @@ void ListaContigua::eliminarAlFinal () {
 }
 
 void ListaContigua::insertar(int posicion, int nuevoValor) {
+	
 	assert(posicion >= 0 && posicion <= n);
 
-	// Si la ListaContigua está ya llena, antes de insertar ampliamos su capacidad en INCREMENTO
+	// Si la ListaContigua estï¿½ ya llena, antes de insertar ampliamos su capacidad en INCREMENTO
 	if (isLlena()) {
 		vector = (int*)realloc(vector, sizeof(int)*(capacidad + INCREMENTO));
 		capacidad += INCREMENTO;
@@ -58,10 +60,9 @@ void ListaContigua::insertar(int posicion, int nuevoValor) {
 }
 
 void ListaContigua::eliminar(int posicion) {
+	
 	assert(posicion >= 0 && posicion <= n - 1);
 
-	// Tapamos el hueco dejado por el elemento eliminado. Para ello, desplazamos a la izquierda los
-	// elementos que hay a partir de posicion+1 hasta el final
 	memmove(&vector[posicion], &vector[posicion + 1], sizeof(int)*(n - posicion - 1));
 	n--;
 
@@ -74,22 +75,23 @@ void ListaContigua::eliminar(int posicion) {
 }
 
 void ListaContigua::concatenar(ListaContigua *listaAConcatenar) {
+	
 	assert(listaAConcatenar != NULL);
 	
-	// Tamaño de la lista a concatenar. Por convención, cuando tenemos
-	// dos listas, el tamaño de una es "n" y el de la otra es "m"
+	// Tamaï¿½o de la lista a concatenar. Por convenciï¿½n, cuando tenemos
+	// dos listas, el tamaï¿½o de una es "n" y el de la otra es "m"
 	int m = listaAConcatenar->getN(); 
 	
 	// Primero vamos a ampliar la capacidad para asegurarnos de que los
 	// nuevos elementos quepan. Para curarnos en salud, ampliamos la 
-	// capacidad en el tamaño de la listaAConcatenar
+	// capacidad en el tamaï¿½o de la listaAConcatenar
 	// Complejidad temporal O(n) 
 	// Complejidad espacial O(m+n)
 	vector = (int*)realloc(vector, sizeof(int)*(capacidad + m));
 	capacidad += m;
 
-	// Vamos insertando al final elemento a elemento. Fíjate en que insertar un elemento al final
-	// es O(1) si no tenemos que ampliar la capacidad (la cual ya está ampliada)
+	// Vamos insertando al final elemento a elemento. Fï¿½jate en que insertar un elemento al final
+	// es O(1) si no tenemos que ampliar la capacidad (la cual ya estï¿½ ampliada)
 	// Complejidad temporal O(m)
 	// Complejidad espacial O(1)
 	for (int i = 0; i < m; i++) {
@@ -98,7 +100,7 @@ void ListaContigua::concatenar(ListaContigua *listaAConcatenar) {
 }
 
 int ListaContigua::buscar(int elementoABuscar) {
-	int posicion = 0; // Posición actual en donde buscamos
+	int posicion = 0; // Posiciï¿½n actual en donde buscamos
 	bool encontrado = false; // Nos indica si hemos encontrado o no el elemento
 
 	// Buscamos el elemento hasta que lo encontremos o hasta que lleguemos al final
@@ -107,7 +109,7 @@ int ListaContigua::buscar(int elementoABuscar) {
 		posicion++;
 	}
 
-	// Devolvemos la posición si lo hemos encontrado, o -1 en caso contrario
+	// Devolvemos la posiciï¿½n si lo hemos encontrado, o -1 en caso contrario
 	if (encontrado) return (posicion - 1);
 	else return (-1);
 }

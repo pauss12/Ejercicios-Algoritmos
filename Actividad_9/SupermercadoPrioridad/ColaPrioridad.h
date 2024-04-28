@@ -4,20 +4,20 @@
 // Clase que implementa una cola con prioridad mediante un monticulo (arbol binario completo en el cual la clave de cada nodo es menor que la de sus descendientes) e implementado sobre una lista contigua
 class ColaPrioridad
 {
-protected:
+	protected:
 
-	ListaContigua vector; 
+		ListaContigua vector; 
 
-public:
+	public:
 
-	void encolar(int nuevoElemento);
+		void encolar(int nuevoElemento);
 
-	int desencolar();
+		int desencolar();
 
-	bool estaVacia();
+		bool estaVacia();
 
-protected:
-	
-	void reestructurar();
+	protected:
+		
+		void reestructurar();
 };
 
