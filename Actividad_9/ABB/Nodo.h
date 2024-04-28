@@ -1,7 +1,8 @@
 #pragma once
 
-// Nodo del árbol binario de búsqueda
+// Nodo del ï¿½rbol binario de bï¿½squeda
 struct Nodo {
+	
 	int contenido; // Contenido del nodo
 	Nodo *padre; // Apunta al padre, o NULL si no tiene
 	Nodo *hijoIzquierdo; // Apunta al hijo izquierdo, o NULL si no tiene hijo izquierdo

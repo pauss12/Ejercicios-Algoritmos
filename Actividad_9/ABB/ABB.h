@@ -1,7 +1,7 @@
 #pragma once
 #include "Nodo.h"
 
-// Árbol binario de búsqueda. 
+// ï¿½rbol binario de bï¿½squeda. 
 class ABB
 {
 	Nodo *raiz; 
@@ -19,6 +19,7 @@ public:
 	~ABB();
 
 protected:
+
 	void eliminarSubarbol (Nodo *raizSubarbol);
 	Nodo *buscarHueco(Nodo *raizSubarbol, int elementoAInsertar);
 	Nodo *buscarRecursivo (Nodo *raizSubarbol, int elementoABuscar);
