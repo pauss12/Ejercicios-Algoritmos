@@ -1,0 +1,106 @@
+BATERIA DE COCHES ---------------------------------
+
+ordenar de menor a mayor las baterias por voltajes; desde los extremos, se va sumando, si entre los dos suman el voltaje necesario, se añade 1 a numero de coches que se puede hacer funcionar, y se pasan a los dos siguientes. Asi hasta que la lista se acabe
+
+Si no suman, se aumenta el indice del principio.
+
+EUROCOPA AMAÑANADA ----------------------------------
+
+Divide y venceras! Es como un merge sort.
+
+FORMAS DE SUMAR -------------------------------------------------
+
+Funcion que sumara todos los valores que me pasaban y mirar si sumaban el maximo numero que me pasaban. Es backtracking, por lo tanto voy en profundidad, y si no llego a la solucion, vuelvo atras y pruebo con otro numero. Si llego a la solucion, devuelvo True, si no, False.
+
+NUMBLE ----------------------------------------------------
+
+Se empieza con la solucion; comprobar si es solucion, si es solucion, imprimir.
+
+Si no es solucion, se divide en subproblemas, y se llama a la funcion con los subproblemas.
+
+QUIEN EMPIEZA -------------------------------------------------
+Lista circular enlazada; necesitas un puntero al primer elemento y un puntero al ultimo elemento.
+
+El primer elemento es cuantos "nodos" va a tener y el siguiente valor, de cuanto va a ser el salto. Se va eliminando el nodo que toca, y se sigue con el siguiente. Hasta que quede solamente un elemento, se imprime por pantalla.
+
+
+//EN EL EXAMEN, UNO DE LOS EJERCICIOS ES DE ALGORITMIA Y EL OTRO DE DATOS ---------------------------------------------
+
+tenemos la funcion de ackerman, que metodo de programacion podriamos utilizar para reducir el coste computacional de la funcion y como se implementaria.
+
+programacion dinamica, calcular valores de la funcion de ackerman y guardarlos en una matriz, para que no se vuelva a calcular. y volver a utilizarlos mas tarde si se necesitan.
+
+
+ALGORITMOS ----------------------
+divide y venceras => se divide en subproblemas mas pequeños, y se resuelven de manera independiente, y se vuelven a unir para obtener la solucion final.
+
+backtracking => se va en profundidad, y si no se llega a la solucion, se vuelve atras y se prueba con otro valor.
+
+programacion dinamica => se calculan valores de la funcion y se guardan en una matriz, para no tener que volver a calcularlos.
+
+algoritmo voraz => se coge el valor mas optimo en cada paso, sin importar el futuro. NO HAY VUELTA ATRAS. Se coge el valor mas optimo en cada paso, y se sigue con el siguiente paso.
+
+- codigo poco acoplado => requiere de varias modificaciones por cada cambio que se haga en el codigo.
+
+fibonacci  => la memoria que necesita para guardar las primeras llamadas recursivas, no va a tener que guardar las dos zonas de memoria a la vez, por eso la complejidad especial seria M(n-1), que es el que ocupa mayor espacio
+
+y la complejodad temporal ==> T(n) = T(n-1) + T(n-2) + 1
+
+- Cuando desarrollamos software tenemos que intentar reducir la acoplamiento y aumentar la cohesion
+
+- ¿cual de las siguientes afirmaciones sobre el analisis de complejidad posteriori NO es correcta?
+    podemos realizarlo sin necesidad de codificar el programa
+
+- el analisis de complejidad teorico determina matematicamente la cantidad de recursos necesarios para ejecutar un algoritmo
+
+- determina la complejidad temporal de este fragmento de codigo y explica la respuesta
+    
+    for (int i = 0; i <= N; i++) {
+        for (int j = 0; j <= i; j++) {
+            suma += matriz[i][j];
+        }
+    }
+
+    sol => n * (n+1) + (n + 1)
+
+- las precondiciones de un codigo deben cumplirse para asegurar la correcta ejecucion del codigo
+
+- normalmente, medimos la complejidad de un algoritmo en el peor caso.
+
+- resolver sudoku se utiliza backtracking para poder probar todas las combinaciones posibles
+
+devolver el cambuo de una compra en monedas, se puede resolver con un algoritmo voraz
+
+- las listas contiguas requieren un numero maximo de elementos a almacenar, necesitan grandes bloques de memoria y no pueden almacenar elementos de distinto tipo
+
+- cuales de las siguientes afirmaciones de las bussquedas en listas contiguas es correcta?
+ en el caso peor, el orden de complejidad
+ 
+
+- la principal ventaja de una tabla hash es que permiten realizar busquedas en tiempo constante si la funcion hash es adecuada
+
+- monticulos permiten que cuando se inserta un elemento, se inserte en la raiz del arbol (ERA DE PREGUNTA INCORRECTA)
+
+- ordenes de complidad de temporal es mayor
+    O(2^n) > O(n!) > O(n^2) > O(n * log n) > O(n) > O(log n) > O(1)
+
+OTRO EXAMEN 
+
+-es posible que dos algoritmos de complejidad temporal de O(n) tengan distinta eficiencia ¿?
+
+(FOTO DE FUNCION (N)) ------------------------------
+
+T(0) = 1
+T(1) = 1
+T(2) = 1
+T(n) = 1 + T(n-3) + T(n-2)
+
+M(0) = 1
+M(1) = 1
+M(n) = 1 + M(n-2)
+
+- complejidad calculada en el caso peor y medio suele ser distinta
+
+- 
+
+
