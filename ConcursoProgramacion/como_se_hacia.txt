@@ -101,6 +101,7 @@ M(n) = 1 + M(n-2)
 
 - complejidad calculada en el caso peor y medio suele ser distinta
 
-- 
+- La complejidad en el caso peor y medio suele ser distinta 
+    Burbuja:n2, Insercion:,n2 mergesort: nlogn quicksort:n2 heapsort: nlog
 
 
